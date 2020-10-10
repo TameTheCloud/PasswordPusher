@@ -7,7 +7,7 @@ FROM docker.io/ubuntu:focal
 ENV APP_ROOT=/opt/PasswordPusher
 ENV PATH=${APP_ROOT}:${PATH} HOME=${APP_ROOT}
 
-RUN ln -fs /usr/share/zoneinfo/Europe/Paris > /etc/localtime
+RUN ln -fs /usr/share/zoneinfo/Australia/Sydney > /etc/localtime
 RUN apt-get update -qq && \
     apt-get install -y --assume-yes build-essential libpq-dev git curl ruby2.7 ruby2.7-dev tzdata sqlite3 ruby-sqlite3 libsqlite3-dev zlib1g-dev nodejs yarnpkg && \
     cd /opt && \
@@ -16,7 +16,7 @@ RUN apt-get update -qq && \
     cd ${APP_ROOT} && \
     chown -R 1001:root ${APP_ROOT}
 
-EXPOSE 5000
+EXPOSE 443
 
 RUN gem update --system
 RUN gem install bundler
